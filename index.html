@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Batalha Naval - Riachuelo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Batalha Naval - Riachuelo</h1>
+
+  <div id="controls">
+    <h2>Posicione sua frota</h2>
+    <button class="ship-btn" data-size="2">Navio de 2 casas</button>
+    <button class="ship-btn" data-size="3">Navio de 3 casas</button>
+    <button class="ship-btn" data-size="4">Navio de 4 casas</button>
+    <br>
+    <button class="orientation-btn" data-orientation="horizontal">Horizontal</button>
+    <button class="orientation-btn" data-orientation="vertical">Vertical</button>
+    <p id="status">Escolha um navio e sua orientação para posicionar.</p>
+  </div>
+
+  <!-- Boards side-by-side -->
+  <div id="boards-wrapper">
+    <div class="board-column">
+      <h2>Seu Tabuleiro</h2>
+      <div id="player-board" class="board"></div>
+    </div>
+
+    <div class="board-column">
+      <h2>Tabuleiro Inimigo</h2>
+      <div id="enemy-board" class="board"></div>
+    </div>
+  </div>
+
+  <!-- Restart button area (hidden until game ends) -->
+  <div id="restart-area">
+    <hr class="divider">
+    <button id="restart-btn" class="start-btn" style="display:none;">Reiniciar Partida</button>
+  </div>
+
+  <!-- Modal Pergunta -->
+  <div id="question-modal" class="modal">
+    <div class="modal-content">
+      <h3 id="question-text"></h3>
+      <div id="options"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
