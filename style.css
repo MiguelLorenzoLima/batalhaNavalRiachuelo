@@ -171,3 +171,30 @@ h2 {
     font-size: 12px;
   }
 }
+/* Celulares pequenos (até 480px) */
+@media (max-width: 620px) {
+  h1 { font-size: 20px; }
+  h2 { font-size: 16px; }
+
+  /* Agora os tabuleiros ficam em coluna */
+  #boards-wrapper {
+    flex-direction: column;
+    align-items: center;  /* centraliza no eixo horizontal */
+    gap: 20px;
+    margin-top: 20px;
+  }
+
+  .board {
+    grid-template-columns: repeat(6, 35px);
+    grid-template-rows: repeat(6, 35px);
+  }
+  .cell {
+    width: 35px;
+    height: 35px;
+  }
+
+  .ship-btn, .orientation-btn, .start-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+}
