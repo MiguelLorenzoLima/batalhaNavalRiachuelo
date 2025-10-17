@@ -15,7 +15,7 @@ Um jogo interativo de **Batalha Naval** desenvolvido em **HTML, CSS e JavaScript
   <img src="https://github.com/user-attachments/assets/aaf06638-8156-4e30-a4b1-deb85558dcf2" width="60%"/>
 </p>
 
-## ⚓ <h1 align="center">Como Jogar</h1>  
+ <h1 align="center">⚓ Como Jogar</h1>  
 
 ### Etapa 1 – Posicionando seus navios  
 - Selecione o navio que deseja colocar em seu tabuleiro.  
