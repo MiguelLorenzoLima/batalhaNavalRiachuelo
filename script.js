@@ -378,31 +378,34 @@ function initQuestions() {
     {q:"Em que ano ocorreu a Batalha do Riachuelo?", options:["1860","1865","1870","1880"], answer:1},
     {q:"Qual país enfrentou o Brasil na Batalha do Riachuelo?", options:["Argentina","Paraguai","Uruguai","Chile"], answer:1},
     {q:"Quem era o comandante brasileiro na batalha?", options:["Tamandaré","Barroso","Osório","Caxias"], answer:1},
-    {q:"O rio Riachuelo é afluente de qual rio?", options:["Amazonas","Paraná","Paraguai","São Francisco"], answer:2},
+    {q:"O rio Riachuelo é afluente de qual rio?", options:["Amazonas","Paraná","Paraguai","São Francisco"], answer:1},/// trocar
     {q:"Qual foi o navio-chefe brasileiro na batalha?", options:["Amazonas","Parnaíba","Tamandaré","Belmonte"], answer:0},
-    {q:"Quem liderava o Paraguai na época?", options:["Solano López","Carlos Antonio López","Artigas","Rosás"], answer:0},
+    {q:"Quem liderava o Paraguai na época?", options:["Solano López","Carlos Antonio","Artigas","Rosás"], answer:0},
     {q:"A batalha ocorreu em qual guerra?", options:["Guerra do Paraguai","Guerra da Cisplatina","Farroupilha","Cabana"], answer:0},
-    {q:"Em que dia ocorreu a batalha?", options:["11 de junho de 1865","7 de setembro de 1865","15 de agosto de 1865","1º de maio de 1865"], answer:0},
+    {q:"Em que dia ocorreu a batalha?", options:["11 de junho de 1865","7 de setembro de 1865","15 de agosto de 1865","1º de maio de 1865"], answer:0},// trocar
     {q:"Qual a importância estratégica da batalha?", options:["Garantir domínio naval","Proteger fronteiras","Apoiar tropas terrestres","Capturar Montevidéu"], answer:0},
-    {q:"Quantos navios brasileiros participaram?", options:["9","11","13","15"], answer:1},
-    {q:"Qual país apoiava o Brasil contra o Paraguai?", options:["Chile","Uruguai","Argentina","Bolívia"], answer:2},
-    {q:"Quem disse a frase 'O Brasil espera que cada um cumpra o seu dever'?", options:["Caxias","Barroso","Tamandaré","Floriano"], answer:1},
-    {q:"Qual resultado imediato da batalha?", options:["Vitória brasileira","Vitória paraguaia","Empate","Suspensão das hostilidades"], answer:0},
-    {q:"Que tipo de embarcação foi decisiva?", options:["Couraçados","Vapor","Fragatas","Submarinos"], answer:1},
-    {q:"Qual foi a principal tática de Barroso?", options:["Romper a linha inimiga","Emboscada","Bater em retirada","Bloqueio"], answer:0},
-    {q:"A batalha consolidou o controle de quem nos rios?", options:["Paraguai","Brasil","Argentina","Uruguai"], answer:1},
-    {q:"A vitória de Riachuelo elevou o moral de quem?", options:["Paraguai","Brasil","Argentina","Chile"], answer:1},
+    {q:"Quantos navios brasileiros participaram?", options:["9","11","13","15"], answer:0},
+    {q:"Qual país apoiava o Brasil contra o Paraguai?", options:["Chile","Colombia","Argentina","Bolívia"], answer:2},
+    {q:"Quem disse a frase 'O Brasil espera que cada um cumpra o seu dever'?", options:["Caxias","Barroso","Tamandaré","Floriano"], answer:1},// trocar
+    {q:"Qual resultado imediato da batalha?", options:["Vitória brasileira","Vitória paraguaia","Empate","Suspensão das hostilidades"], answer:0},// trocar
+    {q:"Que tipo de embarcação foi decisiva?", options:["Couraçados","Vapor","Fragatas","Submarinos"], answer:1}, // qual tipo de embarcação foi usada
+    {q:"Qual foi a principal tática de Barroso?", options:["Romper a linha inimiga","Emboscada","Bater em retirada","Bloqueio"], answer:0}, // rever esta questão
+    {q:"A batalha consolidou o controle de quem nos rios?", options:["Paraguai","Brasil","Chile","Bolívia"], answer:1},
+    {q:"A vitória de Riachuelo elevou o moral de quem?", options:["Paraguai","Brasil","Argentina","Chile"], answer:1},// trocar
     {q:"Qual país sofreu pesadas perdas navais?", options:["Brasil","Argentina","Paraguai","Uruguai"], answer:2},
-    {q:"Qual navio brasileiro encalhou mas continuou lutando?", options:["Parnaíba","Amazonas","Belmonte","Tamandaré"], answer:0},
-    {q:"Que efeito a batalha teve na guerra?", options:["Prolongou","Encurtou","Virou ponto decisivo","Não influenciou"], answer:2},
+    {q:"Qual navio brasileiro encalhou mas continuou lutando?", options:["Parnaíba","Amazonas","Belmonte","Tamandaré"], answer:0}, //trocar
+    {q:"Que efeito a batalha teve na guerra do Paraguai", options:["Prolongou","Encurtou","Virou ponto decisivo","Não influenciou"], answer:2},// trocar
     {q:"Quem era o imperador do Brasil na época?", options:["Dom Pedro I","Dom Pedro II","Regente Feijó","Floriano"], answer:1},
     {q:"Qual arma foi usada pelos paraguaios em seus navios?", options:["Torpedos","Canhões","Mísseis","Submarinos"], answer:1},
     {q:"O Brasil contou com apoio de qual tipo de tropa na região?", options:["Voluntários da Pátria","Mercenários","Estrangeiros","Índios"], answer:0},
     {q:"A Batalha de Riachuelo foi decisiva para qual frente?", options:["Naval","Terrestre","Aérea","Diplomática"], answer:0},
     {q:"O nome 'Riachuelo' refere-se a quê?", options:["Navio","Localidade","Rio afluente","Canhão"], answer:2},
-    {q:"Qual foi o comandante paraguaio na batalha?", options:["Meza","López","Caballero","Francia"], answer:0},
-    {q:"A esquadra brasileira era composta majoritariamente por navios de que tipo?", options:["Vapores a hélice","Canoa","Submarino","Veleiros"], answer:0},
-    {q:"Após Riachuelo, o Brasil manteve controle de qual rio?", options:["Paraná","Uruguai","Paraguai","São Francisco"], answer:2},
+    {q:"Qual foi o comandante paraguaio na batalha?", options:["Meza","López","Caballero","Francia"], answer:0}, // ver com o sor
+    {q:"A esquadra brasileira era composta majoritariamente por navios de que tipo?", options:["Vapores a hélice","Canoa","Submarino","Veleiros"], answer:0}, //ver com o sor
+    {q:"Após Riachuelo, o Brasil manteve controle de qual rio?", options:["Tietê","Uruguai","Paraguai","São Francisco"], answer:2},
+
+
+    
     {q:"A batalha ocorreu em qual província?", options:["Corrientes","Misiones","Assunção","Rio Grande"], answer:0},
     {q:"Qual navio brasileiro abalroou embarcações inimigas?", options:["Amazonas","Parnaíba","Belmonte","Araguaia"], answer:0},
     {q:"Riachuelo foi considerada por muitos como:", options:["Batalha decisiva","Derrota humilhante","Combate irrelevante","Pequena escaramuça"], answer:0},
