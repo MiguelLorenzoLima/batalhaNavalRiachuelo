@@ -1,4 +1,4 @@
-<h1 style="text-align:center;">Batalha Naval - Riachuelo</h1>
+<h1 align="center">Batalha Naval - Riachuelo</h1>
 
 Um jogo interativo de **Batalha Naval** desenvolvido em **HTML, CSS e JavaScript**, com integração de **perguntas interativas** para tornar a experiência ainda mais desafiadora!  
 
