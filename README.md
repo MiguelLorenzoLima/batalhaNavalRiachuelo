@@ -6,10 +6,14 @@ Um jogo interativo de **Batalha Naval** desenvolvido em **HTML, CSS e JavaScript
 
 ##  Demonstração  
 
-<img src="https://github.com/user-attachments/assets/b2b9596f-9387-4d80-9d8c-f733516f160d" width="600"/>  
-<img src="https://github.com/user-attachments/assets/39bbbef4-df55-4a91-96bf-d3c5ab792819" width="600"/>  
-<img src="https://github.com/user-attachments/assets/aaf06638-8156-4e30-a4b1-deb85558dcf2" width="600"/>  
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b2b9596f-9387-4d80-9d8c-f733516f160d" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/39bbbef4-df55-4a91-96bf-d3c5ab792819" width="45%"/>
+</p>
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/aaf06638-8156-4e30-a4b1-deb85558dcf2" width="60%"/>
+</p>
 ---
 
 ## ⚓ Como Jogar  
