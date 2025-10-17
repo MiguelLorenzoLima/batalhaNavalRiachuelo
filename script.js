@@ -350,6 +350,28 @@ function resetGame() {
   renderBoard("enemy-board", false);
 }
 
+
+// -------- Instruções --------
+const instructionsBtn = document.getElementById("instructions-btn");
+const instructionsModal = document.getElementById("instructions-modal");
+const closeInstructions = document.getElementById("close-instructions");
+
+instructionsBtn.onclick = () => {
+  instructionsModal.style.display = "block";
+};
+
+closeInstructions.onclick = () => {
+  instructionsModal.style.display = "none";
+};
+
+// Fecha modal clicando fora
+window.addEventListener("click", function(event) {
+  if (event.target === instructionsModal) {
+    instructionsModal.style.display = "none";
+  }
+});
+
+
 // ---------------- Questions initialization ----------------
 function initQuestions() {
   questions = [

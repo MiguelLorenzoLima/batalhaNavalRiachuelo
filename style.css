@@ -139,3 +139,67 @@ h2 { margin-top: 20px; font-size: 24px; }
   flex-direction: column !important;
   align-items: center !important;
 }
+
+/* Botão de instruções */
+#instructions-btn {
+  margin: 10px 5px;
+  padding: 10px 15px;
+  background-color: #3498db; /* mesma cor dos navios */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+  display: inline-block; /* mesmo comportamento dos outros botões */
+}
+
+#instructions-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Modal de instruções centralizado */
+#instructions-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+
+  /* Centralização com flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#instructions-modal .modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  overflow-y: auto;
+  max-height: 80vh;  /* não passa da tela */
+}
+
+#instructions-modal p {
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 20px;
+  white-space: pre-line;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  #instructions-btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    width: auto; /* não ocupará 100%, fica igual aos outros */
+  }
+}
