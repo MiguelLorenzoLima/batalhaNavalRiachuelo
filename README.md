@@ -45,4 +45,3 @@ Um jogo interativo de **Batalha Naval** desenvolvido em **HTML, CSS e JavaScript
 
 ### 🏆 Condição de vitória  
 - O jogador deve acertar todas as posições dos navios inimigos para vencer a batalha!  
-
