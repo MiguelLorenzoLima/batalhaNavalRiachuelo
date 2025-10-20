@@ -1,30 +1,45 @@
-:root{
+:root {
   --cell-size: 60px;
   --cell-gap: 2px;
 }
 
 /* Reset básico */
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 /* Corpo */
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  background: #0d2b52;
+  /* page background image with a subtle dark overlay for contrast */
+  background-image: linear-gradient(rgba(5, 20, 34, 0.55), rgba(5, 20, 34, 0.55)), url('background.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   color: #fff;
   margin: 0;
   padding: 0;
 }
 
 /* Títulos */
-h1 { margin: 20px; font-size: 32px; }
-h2 { margin-top: 20px; font-size: 24px; }
+h1 {
+  margin: 20px;
+  font-size: 32px;
+}
+
+h2 {
+  margin-top: 20px;
+  font-size: 24px;
+}
 
 /* Wrapper (flex) */
 #boards-wrapper {
   display: flex;
-  flex-direction: row;          /* padrão: lado a lado */
-  flex-wrap: wrap;             /* permite quebra */
+  flex-direction: row;
+  /* padrão: lado a lado */
+  flex-wrap: wrap;
+  /* permite quebra */
   justify-content: center;
   align-items: flex-start;
   gap: 40px;
@@ -34,12 +49,41 @@ h2 { margin-top: 20px; font-size: 24px; }
 
 /* Tabuleiro */
 .board {
+  position: relative;
+  /* para o ::before do mapa */
   display: grid;
   grid-template-columns: repeat(6, var(--cell-size));
   grid-template-rows: repeat(6, var(--cell-size));
   gap: var(--cell-gap);
-  width: max-content;          /* em desktop fica do tamanho do grid */
-  margin: 0;                   /* será sobrescrito no mobile */
+  padding: 14px;
+  /* espaço para borda/mapa ao redor do grid */
+  width: max-content;
+  margin: 0;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.04));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+/* treasure-map background using the project's background image at low opacity */
+.board::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 10px;
+  background-image: url('background.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+  filter: saturate(0.8) contrast(0.9) blur(0.6px);
+}
+
+/* keep cells and interactive content above the map layer */
+.board .cell {
+  position: relative;
+  z-index: 1;
 }
 
 /* Células */
@@ -50,12 +94,22 @@ h2 { margin-top: 20px; font-size: 24px; }
   border: 1px solid #004466;
   cursor: pointer;
 }
-.cell.ship { background: #555; }
-.cell.hit  { background: red !important; }
-.cell.miss { background: #fff !important; }
+
+.cell.ship {
+  background: #555;
+}
+
+.cell.hit {
+  background: red !important;
+}
+
+.cell.miss {
+  background: #fff !important;
+}
 
 /* Botões */
-.ship-btn, .orientation-btn {
+.ship-btn,
+.orientation-btn {
   margin: 5px;
   padding: 10px 15px;
   background: #007b8f;
@@ -65,8 +119,18 @@ h2 { margin-top: 20px; font-size: 24px; }
   color: white;
   cursor: pointer;
 }
-.ship-btn:hover:not(.disabled), .orientation-btn:hover { background: #00a1b2; }
-.ship-btn.disabled { background-color: #555 !important; cursor: not-allowed; opacity: 0.6; }
+
+.ship-btn:hover:not(.disabled),
+.orientation-btn:hover {
+  background: #00a1b2;
+}
+
+.ship-btn.disabled {
+  background-color: #555 !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .start-btn {
   margin-top: 20px;
   padding: 10px 20px;
@@ -77,40 +141,382 @@ h2 { margin-top: 20px; font-size: 24px; }
   color: white;
   cursor: pointer;
 }
-.start-btn:hover { background: #218838; }
+
+.start-btn:hover {
+  background: #218838;
+}
+
+/* ----------------- Ship-style buttons (Titanic-inspired) ----------------- */
+.ships-picker {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 6px;
+  flex-wrap: wrap;
+}
+
+.ship-btn {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px 18px;
+  background: linear-gradient(180deg, #063b52 0%, #0a5068 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  min-width: 120px;
+}
+
+.ship-btn:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+}
+
+.ship-btn:active {
+  transform: translateY(-3px) scale(0.995);
+}
+
+.ship-btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ship-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255, 230, 140, 0.12);
+}
+
+.ship-label {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Ship structural layout */
+.ship-graphic {
+  display: block;
+  width: 100%;
+}
+
+.ship-body {
+  display: block;
+  position: relative;
+  height: 74px;
+  width: 100%;
+}
+
+/* Prow (front tip) */
+.prow {
+  position: absolute;
+  left: 6px;
+  top: 28px;
+  width: 0;
+  height: 0;
+  border-top: 22px solid transparent;
+  border-bottom: 22px solid transparent;
+  border-left: 28px solid #e6e0d6;
+  /* light tip */
+  transform: translateX(-10px) skewY(-4deg);
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+}
+
+/* Elongated hull */
+.hull {
+  position: absolute;
+  left: 18px;
+  right: 12px;
+  top: 18px;
+  height: 40px;
+  background: linear-gradient(180deg, #cbb59b 0%, #8f5a3f 60%);
+  border-radius: 8px 12px 20px 20px / 6px 6px 14px 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45), inset 0 -8px 18px rgba(0, 0, 0, 0.18);
+  overflow: visible;
+}
+
+/* Funnels sit on top of the hull */
+.funnels {
+  position: absolute;
+  top: -18px;
+  left: 28px;
+  right: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.funnel {
+  width: 18px;
+  height: 26px;
+  background: linear-gradient(180deg, #f4cf80 0%, #d99b49 60%);
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  position: relative;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+.funnel::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+}
+
+.funnel::after {
+  content: '';
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(180, 200, 210, 0.6) 30%, rgba(120, 130, 140, 0.18) 70%);
+  border-radius: 50%;
+  opacity: 0.0;
+  animation: smoke 2.6s ease-in-out infinite;
+}
+
+@keyframes smoke {
+  0% {
+    transform: translateX(-50%) translateY(0) scale(0.6);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.6;
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(-18px) scale(1.2);
+    opacity: 0.28;
+  }
+
+  100% {
+    transform: translateX(-50%) translateY(-36px) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Portholes */
+.portholes {
+  position: absolute;
+  bottom: 8px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.port {
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle at 35% 25%, #fff 0%, #cfeaf5 25%, #7fb0c5 60%);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+}
+
+/* Sizes: widen the hull area to match number of casas */
+.ship-size-4 .ship-body {
+  height: 70px;
+}
+
+.ship-size-4 {
+  min-width: 200px;
+}
+
+.ship-size-4 .funnels {
+  left: 28px;
+  right: 28px;
+}
+
+.ship-size-3 {
+  min-width: 170px;
+}
+
+.ship-size-3 .ship-body {
+  height: 66px;
+}
+
+.ship-size-3 .funnels {
+  left: 26px;
+  right: 26px;
+}
+
+.ship-size-2 {
+  min-width: 130px;
+}
+
+.ship-size-2 .ship-body {
+  height: 60px;
+}
+
+.ship-size-2 .funnels {
+  left: 24px;
+  right: 24px;
+}
+
+/* Decorative water shadow under hull */
+.ship-btn::after {
+  content: '';
+  display: block;
+  width: 70%;
+  height: 8px;
+  margin-top: -6px;
+  background: linear-gradient(90deg, rgba(0, 120, 180, 0.16), rgba(0, 80, 140, 0.06));
+  border-radius: 50%;
+  filter: blur(3px);
+}
+
+/* Hover accent: brighter funnels */
+.ship-btn:hover .funnel {
+  filter: brightness(1.08);
+}
+
+/* Focus-visible for keyboard users */
+.ship-btn:focus-visible {
+  box-shadow: 0 0 0 6px rgba(255, 220, 120, 0.12);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .ship-btn {
+    min-width: 140px;
+    padding: 8px 8px 14px;
+  }
+
+  .ship-size-4 {
+    min-width: 220px;
+  }
+
+  .ship-size-3 {
+    min-width: 180px;
+  }
+
+  .ship-size-2 {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ships-picker {
+    gap: 8px;
+  }
+
+  .ship-btn {
+    min-width: 100%;
+    max-width: 360px;
+    padding: 10px;
+  }
+
+  .funnel {
+    width: 14px;
+    height: 20px;
+  }
+
+  .prow {
+    left: 4px;
+    border-left-width: 22px;
+  }
+}
 
 /* Modal */
-.modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
-.modal-content { background: white; color: black; padding: 20px; border-radius: 10px; width: 400px; max-width: 90%; margin: 8% auto; }
-.modal-content button { display: block; margin: 10px auto; padding: 10px; width: 80%; font-weight: bold; }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  margin: 8% auto;
+}
+
+.modal-content button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 80%;
+  font-weight: bold;
+}
 
 /* --------------- Responsividade (usa variáveis para facilmente reduzir células) --------------- */
 
 /* Tablets */
 @media (max-width: 1024px) {
-  :root { --cell-size: 50px; }
-  h1 { font-size: 28px; }
-  h2 { font-size: 20px; }
-  #boards-wrapper { gap: 20px; }
+  :root {
+    --cell-size: 50px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  #boards-wrapper {
+    gap: 20px;
+  }
 }
 
 /* Celulares médios */
 @media (max-width: 768px) {
-  :root { --cell-size: 40px; }
-  h1 { font-size: 24px; }
-  h2 { font-size: 18px; }
-  #boards-wrapper { gap: 15px; }
-  .ship-btn, .orientation-btn, .start-btn { padding: 8px 12px; font-size: 14px; }
+  :root {
+    --cell-size: 40px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  #boards-wrapper {
+    gap: 15px;
+  }
+
+  .ship-btn,
+  .orientation-btn,
+  .start-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
 }
 
 /* Celulares pequenos — AQUI forçamos empilhamento e ajustes importantes */
 @media (max-width: 480px) {
-  :root { --cell-size: 35px; }
+  :root {
+    --cell-size: 35px;
+  }
 
   /* OBRIGATÓRIO: empilhar */
   #boards-wrapper {
-    flex-direction: column !important;   /* força coluna */
-    align-items: center !important;      /* centraliza horizontalmente */
+    flex-direction: column !important;
+    /* força coluna */
+    align-items: center !important;
+    /* centraliza horizontalmente */
     gap: 16px !important;
     padding: 12px !important;
   }
@@ -119,13 +525,20 @@ h2 { margin-top: 20px; font-size: 24px; }
     /* no mobile o tabuleiro ocupa apenas o necessário e é centralizado */
     grid-template-columns: repeat(6, var(--cell-size)) !important;
     grid-template-rows: repeat(6, var(--cell-size)) !important;
-    width: auto !important;              /* evita largura fixa que impeça empilhar */
-    margin: 0 auto !important;           /* centraliza cada board */
+    width: auto !important;
+    /* evita largura fixa que impeça empilhar */
+    margin: 0 auto !important;
+    /* centraliza cada board */
   }
 
-  .cell { width: var(--cell-size) !important; height: var(--cell-size) !important; }
+  .cell {
+    width: var(--cell-size) !important;
+    height: var(--cell-size) !important;
+  }
 
-  .ship-btn, .orientation-btn, .start-btn {
+  .ship-btn,
+  .orientation-btn,
+  .start-btn {
     padding: 6px 10px;
     font-size: 12px;
     display: block;
@@ -144,14 +557,16 @@ h2 { margin-top: 20px; font-size: 24px; }
 #instructions-btn {
   margin: 10px 5px;
   padding: 10px 15px;
-  background-color: #3498db; /* mesma cor dos navios */
+  background-color: #3498db;
+  /* mesma cor dos navios */
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
   transition: background 0.3s;
-  display: inline-block; /* mesmo comportamento dos outros botões */
+  display: inline-block;
+  /* mesmo comportamento dos outros botões */
 }
 
 #instructions-btn:hover {
@@ -167,7 +582,7 @@ h2 { margin-top: 20px; font-size: 24px; }
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
 
   /* Centralização com flexbox */
   display: flex;
@@ -183,7 +598,8 @@ h2 { margin-top: 20px; font-size: 24px; }
   width: 90%;
   text-align: center;
   overflow-y: auto;
-  max-height: 80vh;  /* não passa da tela */
+  max-height: 80vh;
+  /* não passa da tela */
 }
 
 #instructions-modal p {
@@ -200,6 +616,7 @@ h2 { margin-top: 20px; font-size: 24px; }
   #instructions-btn {
     font-size: 14px;
     padding: 8px 12px;
-    width: auto; /* não ocupará 100%, fica igual aos outros */
+    width: auto;
+    /* não ocupará 100%, fica igual aos outros */
   }
 }

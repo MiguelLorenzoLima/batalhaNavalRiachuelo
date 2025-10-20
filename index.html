@@ -1,29 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Batalha Naval - Riachuelo</title>
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
   <h1>Batalha Naval - Riachuelo</h1>
 
 
   <div id="controls">
-  <h2>Posicione sua frota</h2>
-  <button class="ship-btn" data-size="2">Navio de 2 casas</button>
-  <button class="ship-btn" data-size="3">Navio de 3 casas</button>
-  <button class="ship-btn" data-size="4">Navio de 4 casas</button>
-  <br>
-  <button class="orientation-btn" data-orientation="horizontal">Horizontal</button>
-  <button class="orientation-btn" data-orientation="vertical">Vertical</button>
-  
-  <!-- Botão de instruções aqui -->
-  <button id="instructions-btn">Instruções</button>
-  
-  <p id="status">Escolha um navio e sua orientação para posicionar.</p>
-</div>
+    <h2>Posicione sua frota</h2>
+
+    <div class="ships-picker">
+      <!-- Navio 4 casas -->
+      <button class="ship-btn ship-size-4" data-size="4" aria-label="Navio de 4 casas">
+        <span class="ship-graphic" aria-hidden="true">
+          <span class="ship-body">
+            <span class="prow"></span>
+            <span class="hull">
+              <span class="funnels">
+                <span class="funnel"></span>
+                <span class="funnel"></span>
+                <span class="funnel"></span>
+                <span class="funnel"></span>
+              </span>
+              <span class="portholes">
+                <span class="port"></span>
+                <span class="port"></span>
+                <span class="port"></span>
+                <span class="port"></span>
+              </span>
+            </span>
+          </span>
+        </span>
+        <span class="ship-label">Navio de 4 casas</span>
+      </button>
+
+      <!-- Navio 3 casas -->
+      <button class="ship-btn ship-size-3" data-size="3" aria-label="Navio de 3 casas">
+        <span class="ship-graphic" aria-hidden="true">
+          <span class="ship-body">
+            <span class="prow"></span>
+            <span class="hull">
+              <span class="funnels">
+                <span class="funnel"></span>
+                <span class="funnel"></span>
+                <span class="funnel"></span>
+              </span>
+              <span class="portholes">
+                <span class="port"></span>
+                <span class="port"></span>
+                <span class="port"></span>
+              </span>
+            </span>
+          </span>
+        </span>
+        <span class="ship-label">Navio de 3 casas</span>
+      </button>
+
+      <!-- Navio 2 casas -->
+      <button class="ship-btn ship-size-2" data-size="2" aria-label="Navio de 2 casas">
+        <span class="ship-graphic" aria-hidden="true">
+          <span class="ship-body">
+            <span class="prow"></span>
+            <span class="hull">
+              <span class="funnels">
+                <span class="funnel"></span>
+                <span class="funnel"></span>
+              </span>
+              <span class="portholes">
+                <span class="port"></span>
+                <span class="port"></span>
+              </span>
+            </span>
+          </span>
+        </span>
+        <span class="ship-label">Navio de 2 casas</span>
+      </button>
+    </div>
+
+    <br>
+    <button class="orientation-btn" data-orientation="horizontal">Horizontal</button>
+    <button class="orientation-btn" data-orientation="vertical">Vertical</button>
+
+    <!-- Botão de instruções aqui -->
+    <button id="instructions-btn">Instruções</button>
+
+    <p id="status">Escolha um navio e sua orientação para posicionar.</p>
+  </div>
 
 
   <!-- Boards side-by-side -->
@@ -58,31 +126,31 @@
     <div class="modal-content">
       <h2>Instruções</h2>
       <p style="text-align:left; white-space:pre-line;">
-⚓ Etapa 1 – Posicionando seus navios
+        Etapa 1 – Posicionando seus navios
 
-Selecione o navio que deseja colocar em seu tabuleiro.
-Escolha a orientação do navio:
-🔹 Vertical
-🔹 Horizontal
-Clique na casa do tabuleiro onde deseja posicionar o navio.
+        Selecione o navio que deseja colocar em seu tabuleiro.
+        Escolha a orientação do navio:
+        🔹 Vertical
+        🔹 Horizontal
+        Clique na casa do tabuleiro onde deseja posicionar o navio.
 
-⚠️ Atenção: o navio deve caber inteiro no espaço escolhido.
-Exemplo: um navio de 4 casas precisa de 4 espaços livres seguidos.
+        Atenção: o navio deve caber inteiro no espaço escolhido.
+        Exemplo: um navio de 4 casas precisa de 4 espaços livres seguidos.
 
-🚢 Etapa 2 – Preparando para a batalha
+        Etapa 2 – Preparando para a batalha
 
-Repita o processo até posicionar todos os seus navios.
-Quando terminar, clique no botão “Iniciar Jogo”.
+        Repita o processo até posicionar todos os seus navios.
+        Quando terminar, clique no botão “Iniciar Jogo”.
 
-🎯 Etapa 3 – Atacando o inimigo
+        Etapa 3 – Atacando o inimigo
 
-Selecione uma casa do tabuleiro inimigo para atirar.
-Responda a pergunta exibida na tela:
-✅ Se acertar a pergunta, o tiro revelará a casa do inimigo.
-❌ Se errar a pergunta, o tiro não revelará nada.
+        Selecione uma casa do tabuleiro inimigo para atirar.
+        Responda a pergunta exibida na tela:
+        Se acertar a pergunta, o tiro revelará a casa do inimigo.
+        Se errar a pergunta, o tiro não revelará nada.
 
-🏆 Condição de vitória
-O jogador deve acertar todas as posições dos navios inimigos para vencer a batalha!
+        Condição de vitória
+        O jogador deve acertar todas as posições dos navios inimigos para vencer a batalha!
       </p>
       <button id="close-instructions" class="start-btn">Fechar</button>
     </div>
@@ -91,25 +159,26 @@ O jogador deve acertar todas as posições dos navios inimigos para vencer a bat
   <script src="script.js"></script>
 
   <script>
-  // -------- Instruções --------
-  const instructionsBtn = document.getElementById("instructions-btn");
-  const instructionsModal = document.getElementById("instructions-modal");
-  const closeInstructions = document.getElementById("close-instructions");
+    // -------- Instruções --------
+    const instructionsBtn = document.getElementById("instructions-btn");
+    const instructionsModal = document.getElementById("instructions-modal");
+    const closeInstructions = document.getElementById("close-instructions");
 
-  instructionsBtn.onclick = () => {
-    instructionsModal.style.display = "block";
-  };
+    instructionsBtn.onclick = () => {
+      instructionsModal.style.display = "block";
+    };
 
-  closeInstructions.onclick = () => {
-    instructionsModal.style.display = "none";
-  };
-
-  // Fecha modal clicando fora
-  window.addEventListener("click", function(event) {
-    if (event.target === instructionsModal) {
+    closeInstructions.onclick = () => {
       instructionsModal.style.display = "none";
-    }
-  });
+    };
+
+    // Fecha modal clicando fora
+    window.addEventListener("click", function (event) {
+      if (event.target === instructionsModal) {
+        instructionsModal.style.display = "none";
+      }
+    });
   </script>
 </body>
+
 </html>
