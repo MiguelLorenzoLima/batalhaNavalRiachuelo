@@ -6,8 +6,9 @@ Um jogo interativo de **Batalha Naval** desenvolvido em **HTML, CSS e JavaScript
 
 <h1 align="center">Demonstração</h1> 
 
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/b2b9596f-9387-4d80-9d8c-f733516f160d" width="45%"/>
+  <img src="https://github.com/user-attachments/assets/e8f3b09b-e15c-4b97-8e01-8e77c50584bd" width="45%"/>
   <img src="https://github.com/user-attachments/assets/39bbbef4-df55-4a91-96bf-d3c5ab792819" width="45%"/>
 </p>
 
