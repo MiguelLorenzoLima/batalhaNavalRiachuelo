@@ -81,39 +81,16 @@
     </div>
   </div>
 
-  <!-- Modal Instruções -->
-  <div id="instructions-modal" class="modal">
-    <div class="modal-content">
-      <div class="instructions-content">
-        <img src="instrucoes.png" alt="Instruções do jogo" class="instructions-image">
-      </div>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 
   <script>
     // -------- Instruções --------
     const instructionsBtn = document.getElementById("instructions-btn");
-    const instructionsModal = document.getElementById("instructions-modal");
-    const instructionsContent = document.querySelector(".instructions-content");
 
     instructionsBtn.onclick = () => {
-      instructionsModal.style.display = "block";
+      window.location.href = "instrucoes.html";
     };
-
-    // Fecha modal clicando fora da imagem
-    instructionsModal.addEventListener("click", function (event) {
-      // Se clicou no modal mas não no conteúdo da imagem
-      if (event.target === instructionsModal) {
-        instructionsModal.style.display = "none";
-      }
-    });
-
-    // Previne que clicar na imagem feche o modal
-    instructionsContent.addEventListener("click", function (event) {
-      event.stopPropagation();
-    });
   </script>
 </body>
 
