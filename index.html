@@ -17,68 +17,26 @@
 
     <div class="ships-picker">
       <!-- Navio 4 casas -->
-      <button class="ship-btn ship-size-4" data-size="4" aria-label="Navio de 4 casas">
-        <span class="ship-graphic" aria-hidden="true">
-          <span class="ship-body">
-            <span class="prow"></span>
-            <span class="hull">
-              <span class="funnels">
-                <span class="funnel"></span>
-                <span class="funnel"></span>
-                <span class="funnel"></span>
-                <span class="funnel"></span>
-              </span>
-              <span class="portholes">
-                <span class="port"></span>
-                <span class="port"></span>
-                <span class="port"></span>
-                <span class="port"></span>
-              </span>
-            </span>
-          </span>
-        </span>
+      <button class="ship-btn" data-size="4" aria-label="Navio de 4 casas">
+        <div class="ship-container">
+          <img src="navio-button.png" alt="Navio de guerra" class="ship-image">
+        </div>
         <span class="ship-label">Navio de 4 casas</span>
       </button>
 
       <!-- Navio 3 casas -->
-      <button class="ship-btn ship-size-3" data-size="3" aria-label="Navio de 3 casas">
-        <span class="ship-graphic" aria-hidden="true">
-          <span class="ship-body">
-            <span class="prow"></span>
-            <span class="hull">
-              <span class="funnels">
-                <span class="funnel"></span>
-                <span class="funnel"></span>
-                <span class="funnel"></span>
-              </span>
-              <span class="portholes">
-                <span class="port"></span>
-                <span class="port"></span>
-                <span class="port"></span>
-              </span>
-            </span>
-          </span>
-        </span>
+      <button class="ship-btn" data-size="3" aria-label="Navio de 3 casas">
+        <div class="ship-container">
+          <img src="navio-button.png" alt="Navio de guerra" class="ship-image">
+        </div>
         <span class="ship-label">Navio de 3 casas</span>
       </button>
 
       <!-- Navio 2 casas -->
-      <button class="ship-btn ship-size-2" data-size="2" aria-label="Navio de 2 casas">
-        <span class="ship-graphic" aria-hidden="true">
-          <span class="ship-body">
-            <span class="prow"></span>
-            <span class="hull">
-              <span class="funnels">
-                <span class="funnel"></span>
-                <span class="funnel"></span>
-              </span>
-              <span class="portholes">
-                <span class="port"></span>
-                <span class="port"></span>
-              </span>
-            </span>
-          </span>
-        </span>
+      <button class="ship-btn" data-size="2" aria-label="Navio de 2 casas">
+        <div class="ship-container">
+          <img src="navio-button.png" alt="Navio de guerra" class="ship-image">
+        </div>
         <span class="ship-label">Navio de 2 casas</span>
       </button>
     </div>
@@ -138,21 +96,23 @@
     // -------- Instruções --------
     const instructionsBtn = document.getElementById("instructions-btn");
     const instructionsModal = document.getElementById("instructions-modal");
-    const closeInstructions = document.getElementById("close-instructions");
+    const instructionsContent = document.querySelector(".instructions-content");
 
     instructionsBtn.onclick = () => {
       instructionsModal.style.display = "block";
     };
 
-    closeInstructions.onclick = () => {
-      instructionsModal.style.display = "none";
-    };
-
-    // Fecha modal clicando fora
-    window.addEventListener("click", function (event) {
+    // Fecha modal clicando fora da imagem
+    instructionsModal.addEventListener("click", function (event) {
+      // Se clicou no modal mas não no conteúdo da imagem
       if (event.target === instructionsModal) {
         instructionsModal.style.display = "none";
       }
+    });
+
+    // Previne que clicar na imagem feche o modal
+    instructionsContent.addEventListener("click", function (event) {
+      event.stopPropagation();
     });
   </script>
 </body>

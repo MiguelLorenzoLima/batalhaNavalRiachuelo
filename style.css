@@ -146,287 +146,178 @@ h2 {
   background: #218838;
 }
 
-/* ----------------- Ship-style buttons (Titanic-inspired) ----------------- */
+/* ----------------- Beautiful Ship Buttons ----------------- */
 .ships-picker {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
   align-items: center;
-  margin: 10px 0 6px;
-  flex-wrap: wrap;
+  margin: 20px 0;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 0 20px;
 }
 
 .ship-btn {
   position: relative;
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px 18px;
-  background: linear-gradient(180deg, #063b52 0%, #0a5068 100%);
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: transform 180ms ease, box-shadow 180ms ease;
+  gap: 12px;
+  padding: 20px 15px;
+  background: linear-gradient(145deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%);
+  border: 2px solid #3b82f6;
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 25px rgba(30, 58, 138, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   min-width: 120px;
+  max-width: 120px;
+  flex-shrink: 0;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.ship-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
 }
 
 .ship-btn:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 
+    0 15px 35px rgba(30, 58, 138, 0.4),
+    0 5px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: #60a5fa;
+}
+
+.ship-btn:hover::before {
+  transform: translateX(100%);
 }
 
 .ship-btn:active {
-  transform: translateY(-3px) scale(0.995);
+  transform: translateY(-4px) scale(1.02);
 }
 
 .ship-btn.disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   pointer-events: none;
+  transform: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .ship-btn:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(255, 230, 140, 0.12);
+  box-shadow: 
+    0 8px 25px rgba(30, 58, 138, 0.3),
+    0 0 0 4px rgba(59, 130, 246, 0.3);
 }
 
 .ship-label {
-  font-size: 14px;
-  color: #fff;
-  font-weight: 700;
-}
-
-/* Ship structural layout */
-.ship-graphic {
-  display: block;
-  width: 100%;
-}
-
-.ship-body {
-  display: block;
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.3;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  z-index: 2;
   position: relative;
-  height: 74px;
-  width: 100%;
 }
 
-/* Prow (front tip) - REMOVED */
-.prow {
-  display: none;
-}
-
-/* Elongated hull */
-.hull {
-  position: absolute;
-  left: 18px;
-  right: 12px;
-  top: 18px;
-  height: 40px;
-  background: linear-gradient(180deg, #cbb59b 0%, #8f5a3f 60%);
-  border-radius: 8px 12px 20px 20px / 6px 6px 14px 14px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45), inset 0 -8px 18px rgba(0, 0, 0, 0.18);
-  overflow: visible;
-}
-
-/* Funnels sit on top of the hull */
-.funnels {
-  position: absolute;
-  top: -18px;
-  left: 28px;
-  right: 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-}
-
-.funnel {
-  width: 18px;
-  height: 26px;
-  background: linear-gradient(180deg, #f4cf80 0%, #d99b49 60%);
-  border-radius: 3px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+/* Ship Container - Usando imagem */
+.ship-container {
   position: relative;
-  border: 2px solid rgba(0, 0, 0, 0.08);
-}
-
-.funnel::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 10px;
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 50%;
-}
-
-.funnel::after {
-  content: '';
-  position: absolute;
-  top: -28px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(180, 200, 210, 0.6) 30%, rgba(120, 130, 140, 0.18) 70%);
-  border-radius: 50%;
-  opacity: 0.0;
-  animation: smoke 2.6s ease-in-out infinite;
-}
-
-@keyframes smoke {
-  0% {
-    transform: translateX(-50%) translateY(0) scale(0.6);
-    opacity: 0;
-  }
-
-  20% {
-    opacity: 0.6;
-  }
-
-  60% {
-    transform: translateX(-50%) translateY(-18px) scale(1.2);
-    opacity: 0.28;
-  }
-
-  100% {
-    transform: translateX(-50%) translateY(-36px) scale(1.6);
-    opacity: 0;
-  }
-}
-
-/* Portholes */
-.portholes {
-  position: absolute;
-  bottom: 8px;
-  left: 20px;
-  right: 20px;
+  width: 80px;
+  height: 60px;
+  z-index: 2;
   display: flex;
-  gap: 12px;
+  align-items: center;
   justify-content: center;
 }
 
-.port {
-  width: 12px;
-  height: 12px;
-  background: radial-gradient(circle at 35% 25%, #fff 0%, #cfeaf5 25%, #7fb0c5 60%);
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.18);
-  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.25);
+/* Imagem do navio */
+.ship-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
-/* Sizes: widen the hull area to match number of casas */
-.ship-size-4 .ship-body {
-  height: 70px;
+/* Hover Effects para a imagem */
+.ship-btn:hover .ship-image {
+  transform: scale(1.05);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3)) brightness(1.1);
 }
 
-.ship-size-4 {
-  min-width: 180px;
-}
-
-.ship-size-4 .funnels {
-  left: 28px;
-  right: 28px;
-}
-
-.ship-size-3 {
-  min-width: 180px;
-}
-
-.ship-size-3 .ship-body {
-  height: 66px;
-}
-
-.ship-size-3 .funnels {
-  left: 26px;
-  right: 26px;
-}
-
-.ship-size-2 {
-  min-width: 180px;
-}
-
-.ship-size-2 .ship-body {
-  height: 60px;
-}
-
-.ship-size-2 .funnels {
-  left: 24px;
-  right: 24px;
-}
-
-/* Decorative water shadow under hull - REMOVED */
-/*.ship-btn::after {
-  content: '';
-  display: block;
-  width: 70%;
-  height: 8px;
-  margin-top: -6px;
-  background: linear-gradient(90deg, rgba(0, 120, 180, 0.16), rgba(0, 80, 140, 0.06));
-  border-radius: 50%;
-  filter: blur(3px);
-}*/
-
-/* Hover accent: brighter funnels */
-.ship-btn:hover .funnel {
-  filter: brightness(1.08);
-}
-
-/* Focus-visible for keyboard users */
-.ship-btn:focus-visible {
-  box-shadow: 0 0 0 6px rgba(255, 220, 120, 0.12);
-}
-
-/* Responsive tweaks */
+/* Responsive Design - Imagem do navio */
 @media (max-width: 768px) {
-  .ship-btn {
-    min-width: 140px;
-    padding: 8px 6px 12px;
-  }
-
-  .ship-size-4 {
-    min-width: 140px;
-  }
-
-  .ship-size-3 {
-    min-width: 140px;
-  }
-
-  .ship-size-2 {
-    min-width: 140px;
-  }
-
-  .ship-label {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 480px) {
   .ships-picker {
-    gap: 6px;
+    gap: 10px;
+    padding: 0 15px;
   }
 
   .ship-btn {
     min-width: 100px;
-    padding: 6px 4px 8px;
-  }
-
-  .ship-size-4,
-  .ship-size-3,
-  .ship-size-2 {
-    min-width: 100px;
+    max-width: 100px;
+    padding: 15px 12px;
   }
 
   .ship-label {
     font-size: 11px;
   }
 
-  .ship-body {
-    height: 60px;
+  .ship-container {
+    width: 70px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ships-picker {
+    gap: 8px;
+    padding: 0 10px;
   }
 
-  .funnel {
-    width: 12px;
-    height: 18px;
+  .ship-btn {
+    min-width: 85px;
+    max-width: 85px;
+    padding: 12px 10px;
+  }
+
+  .ship-label {
+    font-size: 10px;
+  }
+
+  .ship-container {
+    width: 60px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 320px) {
+  .ship-container {
+    width: 50px;
+    height: 35px;
+  }
+  
+  .ship-btn {
+    min-width: 75px;
+    max-width: 75px;
+    padding: 10px 8px;
+  }
+  
+  .ship-label {
+    font-size: 9px;
   }
 }
 
@@ -578,8 +469,8 @@ h2 {
 /* Estilos para a imagem de instruções */
 .instructions-image {
   width: auto;
-  max-width: 92vw;
-  max-height: 94vh;
+  max-width: 90vw;
+  max-height: 80vh;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -633,31 +524,6 @@ h2 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-.close-instructions-btn {
-  margin-top: 12px;
-  padding: 8px 16px;
-  background-color: #8B4513;
-  border: 2px solid #654321;
-  border-radius: 6px;
-  color: #FFE4B5;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  width: auto;
-  display: inline-block;
-}
-
-.close-instructions-btn:hover {
-  background-color: #A0522D;
-  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.5);
-  transform: scale(1.05);
-}
-
-.close-instructions-btn:active {
-  transform: scale(0.98);
-}
 
 /* Responsividade */
 @media (max-width: 768px) {
@@ -686,11 +552,6 @@ h2 {
     margin-bottom: 15px;
   }
 
-  .close-instructions-btn {
-    padding: 10px 24px;
-    font-size: 14px;
-    margin-top: 15px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -712,9 +573,4 @@ h2 {
     margin-bottom: 12px;
   }
 
-  .close-instructions-btn {
-    padding: 9px 20px;
-    font-size: 13px;
-    margin-top: 12px;
-  }
 }
