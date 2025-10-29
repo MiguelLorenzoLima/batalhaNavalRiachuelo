@@ -69,6 +69,16 @@ function attachControlListeners() {
   document.querySelectorAll(".orientation-btn").forEach(btn => {
     btn.onclick = () => {
       selectedOrientation = btn.dataset.orientation;
+
+      // visual cue: add .active to show underline for 3 seconds
+      // remove .active from other orientation buttons
+      document.querySelectorAll('.orientation-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // remove active after 3 seconds
+      setTimeout(() => {
+        btn.classList.remove('active');
+      }, 3000);
     };
   });
 
