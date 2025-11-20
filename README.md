@@ -11,7 +11,7 @@ Um jogo interativo de **Batalha Naval** desenvolvido em **HTML, CSS e JavaScript
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/bc53fead-a51e-499e-b9ac-1d3eae572094" width="75%"/>
-  <img src="https://github.com/user-attachments/assets/790fa6d3-9214-4e55-b204-9e87c4d513e7" width="75%"/>
+  <img src="https://github.com/user-attachments/assets/1f7c38a7-c83e-458a-9a16-ca2220873ac5" width="35%"/>
 </p>
 
 
